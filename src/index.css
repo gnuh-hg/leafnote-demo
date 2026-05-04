@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+  }
+  body {
+    @apply bg-ink-950 text-zinc-100;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99, 102, 241, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 10%, rgba(244, 114, 182, 0.04), transparent);
+    background-attachment: fixed;
+  }
+  ::selection {
+    @apply bg-indigo-500/30 text-zinc-100;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-ink-900/60 backdrop-blur-xl border border-ink-700/60;
+  }
+  .card-surface {
+    @apply bg-ink-850 border border-ink-700/60 rounded-2xl;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[11px] font-medium;
+  }
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:ring-offset-2 focus:ring-offset-ink-950;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2e2e3d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3d3d4f;
+}
+
+.atom-highlight {
+  background: linear-gradient(180deg, transparent 60%, rgba(129, 140, 248, 0.25) 60%);
+  border-radius: 2px;
+  padding: 0 2px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.atom-highlight:hover,
+.atom-highlight.active {
+  background: linear-gradient(180deg, transparent 50%, rgba(129, 140, 248, 0.4) 50%);
+}
+.atom-highlight.type-proposition {
+  background: linear-gradient(180deg, transparent 60%, rgba(251, 191, 36, 0.25) 60%);
+}
+.atom-highlight.type-proposition.active,
+.atom-highlight.type-proposition:hover {
+  background: linear-gradient(180deg, transparent 50%, rgba(251, 191, 36, 0.4) 50%);
+}
+.atom-highlight.type-relation {
+  background: linear-gradient(180deg, transparent 60%, rgba(52, 211, 153, 0.25) 60%);
+}
+.atom-highlight.type-relation.active,
+.atom-highlight.type-relation:hover {
+  background: linear-gradient(180deg, transparent 50%, rgba(52, 211, 153, 0.4) 50%);
+}
+.atom-highlight.type-fact {
+  background: linear-gradient(180deg, transparent 60%, rgba(56, 189, 248, 0.25) 60%);
+}
+.atom-highlight.type-fact.active,
+.atom-highlight.type-fact:hover {
+  background: linear-gradient(180deg, transparent 50%, rgba(56, 189, 248, 0.4) 50%);
+}
