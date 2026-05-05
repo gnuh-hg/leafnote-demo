@@ -1,4 +1,4 @@
-import { X, Brain, Link2, Edit2, GitMerge, Calendar, Eye } from 'lucide-react'
+import { X, Brain, Link2, Edit2, GitMerge, Calendar, Eye, Snowflake, Sun } from 'lucide-react'
 import { TYPE_STYLES, RetentionRow } from './AtomCard'
 import { atoms as allAtoms } from '../data/mockData'
 
@@ -24,6 +24,12 @@ export default function AtomDetailModal({ atom, onClose }) {
               <T.icon className="w-3 h-3" />
               {T.label}
             </span>
+            {atom.dormant && (
+              <span className="pill border text-sky-300 bg-sky-500/10 border-sky-500/20">
+                <Snowflake className="w-2.5 h-2.5" />
+                Ngủ đông
+              </span>
+            )}
             <span className="text-[11px] text-zinc-500">
               ID: <span className="font-mono">{atom.id}</span>
             </span>
@@ -158,6 +164,17 @@ export default function AtomDetailModal({ atom, onClose }) {
               <GitMerge className="w-3 h-3" />
               Merge
             </button>
+            {atom.dormant ? (
+              <button className="px-3 py-1.5 rounded-lg text-xs text-amber-300 hover:text-amber-200 hover:bg-amber-500/10 transition flex items-center gap-1.5">
+                <Sun className="w-3 h-3" />
+                Hồi sinh
+              </button>
+            ) : (
+              <button className="px-3 py-1.5 rounded-lg text-xs text-zinc-400 hover:text-sky-300 hover:bg-sky-500/10 transition flex items-center gap-1.5">
+                <Snowflake className="w-3 h-3" />
+                Ngủ đông
+              </button>
+            )}
             <button className="px-3 py-1.5 rounded-lg text-xs bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition flex items-center gap-1.5">
               <Brain className="w-3 h-3" />
               Ôn ngay

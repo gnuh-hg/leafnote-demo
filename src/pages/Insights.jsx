@@ -24,7 +24,7 @@ export default function Insights() {
           Hồ sơ nhận thức của bạn
         </h1>
         <p className="text-zinc-400 mt-2 max-w-2xl">
-          Mnema xây dựng profile cá nhân từ hành vi ôn tập, mở lại, và viết note. Càng dùng lâu, các điều chỉnh càng chính xác.
+          Leafnote xây dựng profile cá nhân từ hành vi ôn tập, mở lại, và viết note. Càng dùng lâu, các điều chỉnh càng chính xác.
         </p>
       </div>
 
@@ -69,7 +69,7 @@ export default function Insights() {
               </div>
               <p className="text-sm text-zinc-300">
                 Bạn quên nhanh hơn FSRS mặc định khoảng{' '}
-                <span className="text-rose-300 font-medium">22%</span>. Mnema đã rút ngắn interval review.
+                <span className="text-rose-300 font-medium">22%</span>. Leafnote đã rút ngắn interval review.
               </p>
             </div>
             <div className="flex items-center gap-3 text-[10px]">
@@ -116,7 +116,7 @@ export default function Insights() {
                 </h3>
               </div>
               <p className="text-sm text-zinc-300">
-                Cụm nào đang phát triển, cụm nào đang lạnh dần — Mnema dùng dữ liệu này để chọn hạt cần surface.
+                Cụm nào đang phát triển, cụm nào đang lạnh dần — Leafnote dùng dữ liệu này để chọn hạt cần surface.
               </p>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function Insights() {
           <div className="flex items-center gap-2 mb-4">
             <Activity className="w-3.5 h-3.5 text-emerald-400" />
             <h3 className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium">
-              Tín hiệu Mnema đang theo dõi
+              Tín hiệu Leafnote đang theo dõi
             </h3>
           </div>
           <div className="space-y-3">
@@ -165,7 +165,7 @@ export default function Insights() {
           <div className="flex items-center gap-2 mb-4">
             <Layers className="w-3.5 h-3.5 text-indigo-400" />
             <h3 className="text-[11px] uppercase tracking-wider text-indigo-300 font-medium">
-              Mnema đã điều chỉnh cho bạn
+              Leafnote đã điều chỉnh cho bạn
             </h3>
           </div>
           <div className="space-y-3 text-[13px] leading-relaxed text-zinc-200">

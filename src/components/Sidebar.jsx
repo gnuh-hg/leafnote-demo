@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import {
   Sparkles,
@@ -5,10 +6,12 @@ import {
   Network,
   Brain,
   BarChart3,
-  Atom,
+  Leaf,
   ChevronDown,
+  Plus,
 } from 'lucide-react'
 import { projects } from '../data/mockData'
+import ProjectCreateModal from './ProjectCreateModal'
 
 const navItems = [
   { to: '/', label: 'Đang nổi lên', icon: Sparkles, badge: '12' },
@@ -20,21 +23,22 @@ const navItems = [
 
 export default function Sidebar() {
   const active = projects.find((p) => p.active)
+  const [showCreate, setShowCreate] = useState(false)
   return (
     <aside className="w-64 shrink-0 bg-ink-900/70 backdrop-blur-xl border-r border-ink-700/60 flex flex-col">
       {/* Wordmark */}
       <div className="px-5 pt-5 pb-4 border-b border-ink-700/40">
         <div className="flex items-center gap-2.5">
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-violet-600 to-fuchsia-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
-            <Atom className="w-[18px] h-[18px] text-white" strokeWidth={2.2} />
+          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 via-teal-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+            <Leaf className="w-[18px] h-[18px] text-white" strokeWidth={2.2} />
             <div className="absolute inset-0 rounded-xl ring-1 ring-white/10" />
           </div>
           <div>
             <div className="font-serif text-2xl font-semibold leading-none tracking-tight">
-              Mnema
+              Leafnote
             </div>
             <div className="text-[9px] uppercase tracking-[0.2em] text-zinc-500 mt-1.5">
-              tri thức nguyên tử
+              ghi chú có vòng đời
             </div>
           </div>
         </div>
@@ -95,8 +99,18 @@ export default function Sidebar() {
         ))}
 
         <div className="pt-4 pb-1">
-          <div className="text-[10px] uppercase tracking-wider text-zinc-500 px-3 mb-1.5 font-medium">
-            Tất cả project
+          <div className="flex items-center justify-between px-3 mb-1.5">
+            <div className="text-[10px] uppercase tracking-wider text-zinc-500 font-medium">
+              Tất cả project
+            </div>
+            <button
+              onClick={() => setShowCreate(true)}
+              className="text-[10px] text-zinc-500 hover:text-indigo-300 flex items-center gap-0.5 transition"
+              title="Tạo project mới — bạn nhập tên + chọn màu"
+            >
+              <Plus className="w-2.5 h-2.5" />
+              Mới
+            </button>
           </div>
           {projects.map((p) => (
             <button
@@ -116,8 +130,17 @@ export default function Sidebar() {
               </span>
             </button>
           ))}
+          <button
+            onClick={() => setShowCreate(true)}
+            className="w-full mt-1 flex items-center gap-2 px-3 py-1.5 rounded-md text-[12px] text-zinc-500 hover:text-indigo-300 hover:bg-ink-850 border border-dashed border-ink-700/60 hover:border-indigo-500/40 transition"
+          >
+            <Plus className="w-3 h-3" />
+            <span>Tạo project mới</span>
+          </button>
         </div>
       </nav>
+
+      {showCreate && <ProjectCreateModal onClose={() => setShowCreate(false)} />}
 
       {/* Cognitive snapshot */}
       <div className="p-4 border-t border-ink-700/40 bg-ink-900/40">

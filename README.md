@@ -1,11 +1,13 @@
-# Mnema — Demo UI
+# Leafnote — Demo UI
 
-Demo trực quan cho hệ thống ghi chú thích ứng dựa trên phân rã tri thức nguyên tử. Toàn bộ dữ liệu là mock — không có logic backend thực.
+Demo trực quan cho **Leafnote** — hệ thống ghi chú thích ứng dựa trên phân rã tri thức nguyên tử. Mỗi ghi chú là một chiếc lá: nhỏ, độc lập, có vòng đời riêng. Toàn bộ dữ liệu là mock — không có logic backend thực.
+
+> Tagline: *Ghi chú không chết. Tri thức quay lại đúng lúc.*
 
 ## Chạy
 
 ```bash
-cd mnema
+cd leafnote-demo
 npm install
 npm run dev
 ```
@@ -20,8 +22,10 @@ Mở `http://localhost:5173`.
 | `/notes` | Danh sách ghi chú theo project |
 | `/note/n2` | Note editor — minh hoạ Atomic Engine phân rã text thành hạt, hover để liên kết text ↔ hạt |
 | `/graph` | Bản đồ tri thức — graph SVG, toggle màu theo cụm hoặc retention |
-| `/review` | Phiên ôn active recall với 4 mức độ phản hồi (Quên/Khó/Vừa/Dễ) |
-| `/insights` | Hồ sơ nhận thức — forgetting curve cá nhân, heatmap chủ đề, tín hiệu Mnema theo dõi |
+| `/review` | Phiên ôn active recall với 4 mức độ phản hồi (Quên / Khó / Vừa / Dễ) |
+| `/insights` | Hồ sơ nhận thức — forgetting curve cá nhân, heatmap chủ đề, tín hiệu Leafnote theo dõi |
+
+Nút **"Ghi chú mới"** trên TopBar mở capture modal với 3 kênh: text, voice (STT), image (OCR ≤ 5 ảnh) — đúng như spec ở `information/features.md`.
 
 ## Stack
 
@@ -30,3 +34,7 @@ Mở `http://localhost:5173`.
 - React Router 6
 - Lucide icons
 - Inter (sans) + Cormorant Garamond (serif) cho cảm giác academic
+
+## Lưu ý
+
+Bản demo chỉ minh hoạ UI/UX và luồng tính năng. Một số nút (Lưu, Sửa, Merge, Hồi sinh, …) cố ý không xử lý — backend thật được scaffold ở repo `leafnote/`.

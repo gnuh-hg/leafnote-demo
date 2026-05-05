@@ -6,6 +6,7 @@ import {
   GitMerge,
   BookOpen,
   Link2,
+  Snowflake,
 } from 'lucide-react'
 
 export const TYPE_STYLES = {
@@ -52,10 +53,18 @@ export default function AtomCard({ atom, onClick, compact = false }) {
       className="group text-left card-surface p-5 hover:border-indigo-500/40 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/5 animate-fade-in w-full"
     >
       <div className="flex items-center justify-between mb-3">
-        <span className={`pill border ${T.color}`}>
-          <T.icon className="w-3 h-3" />
-          {T.label}
-        </span>
+        <div className="flex items-center gap-1.5">
+          <span className={`pill border ${T.color}`}>
+            <T.icon className="w-3 h-3" />
+            {T.label}
+          </span>
+          {atom.dormant && (
+            <span className="pill border text-sky-300 bg-sky-500/10 border-sky-500/20" title="Hạt ngủ đông — không xuất hiện trong recall">
+              <Snowflake className="w-2.5 h-2.5" />
+              Ngủ đông
+            </span>
+          )}
+        </div>
         {S && (
           <span className={`flex items-center gap-1 text-[11px] font-medium ${S.color}`}>
             <S.icon className="w-3 h-3" />

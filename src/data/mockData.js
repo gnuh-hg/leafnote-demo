@@ -1,4 +1,4 @@
-// Mock dữ liệu cho Mnema demo. Tất cả nội dung tiếng Việt phục vụ visualization.
+// Mock dữ liệu cho Leafnote demo. Tất cả nội dung tiếng Việt phục vụ visualization.
 
 export const projects = [
   { id: 'p1', name: 'Triết học khoa học', dot: 'bg-amber-400', atomCount: 47, noteCount: 8, active: true, heat: 0.92 },
@@ -212,7 +212,7 @@ export const atoms = [
     retention: 0.88,
     relevance: 0.96,
     surfacingType: 'related',
-    surfacingReason: 'Cốt lõi cho engine cá nhân hoá của Mnema',
+    surfacingReason: 'Cốt lõi cho engine cá nhân hoá của Leafnote',
     lastReviewedAt: 'hôm qua',
     reviewCount: 18,
     createdAt: '2 tháng trước',
@@ -357,6 +357,7 @@ export const atoms = [
     reviewCount: 2,
     createdAt: '2 tháng trước',
     linkedAtoms: [],
+    dormant: true,
   },
   {
     id: 'a18',
@@ -371,6 +372,7 @@ export const atoms = [
     reviewCount: 1,
     createdAt: '2 tháng trước',
     linkedAtoms: ['a17'],
+    dormant: true,
   },
 
   // Project 5: Lịch sử
@@ -387,6 +389,7 @@ export const atoms = [
     reviewCount: 3,
     createdAt: '3 tháng trước',
     linkedAtoms: [],
+    dormant: true,
   },
 ]
 
