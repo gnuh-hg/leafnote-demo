@@ -100,12 +100,12 @@ export default function NoteEditor() {
   return (
     <div className="px-8 py-8 max-w-[1500px] mx-auto">
       {showFreshBanner && (
-        <div className="mb-5 rounded-xl border border-indigo-500/30 bg-gradient-to-r from-indigo-500/10 via-violet-500/5 to-transparent p-3.5 flex items-start gap-3 animate-fade-in">
-          <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center shrink-0">
-            <Layers className="w-4 h-4 text-indigo-300 animate-pulse-soft" />
+        <div className="mb-5 rounded-xl border border-emerald-500/30 bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-transparent p-3.5 flex items-start gap-3 animate-fade-in">
+          <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center shrink-0">
+            <Layers className="w-4 h-4 text-emerald-600 dark:text-emerald-300 animate-pulse-soft" />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="text-[13px] font-medium text-indigo-100 mb-0.5">
+            <div className="text-[13px] font-medium text-emerald-900 dark:text-emerald-100 mb-0.5">
               AI vừa phân rã {note.detectedAtoms.length} hạt từ note này
             </div>
             <div className="text-[11.5px] text-zinc-400">
@@ -119,7 +119,7 @@ export default function NoteEditor() {
               next.delete('fresh')
               setSearchParams(next, { replace: true })
             }}
-            className="p-1 rounded text-zinc-500 hover:text-zinc-200 hover:bg-ink-800 shrink-0"
+            className="p-1 rounded text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-paper-200 dark:hover:bg-ink-800 shrink-0"
           >
             <X className="w-3.5 h-3.5" />
           </button>
@@ -160,8 +160,8 @@ export default function NoteEditor() {
 
           {/* Title */}
           {mode === 'read' ? (
-            <h1 className="font-serif text-4xl font-semibold tracking-tight text-zinc-50">
-              {title || <span className="text-zinc-600">Chưa có tiêu đề</span>}
+            <h1 className="font-serif text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              {title || <span className="text-zinc-400">Chưa có tiêu đề</span>}
             </h1>
           ) : (
             <input
@@ -174,7 +174,7 @@ export default function NoteEditor() {
               placeholder={
                 isNew ? 'Tiêu đề (để trống → AI sinh sau khi lưu)' : 'Tiêu đề'
               }
-              className="font-serif text-4xl font-semibold tracking-tight text-zinc-50 bg-transparent w-full focus:outline-none border-b border-dashed border-ink-700/60 focus:border-indigo-500/40 pb-1 placeholder:text-zinc-700"
+              className="font-serif text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 bg-transparent w-full focus:outline-none border-b border-dashed border-paper-300 dark:border-ink-700/60 focus:border-emerald-500/40 pb-1 placeholder:text-zinc-400 dark:placeholder:text-zinc-700"
             />
           )}
 
@@ -183,7 +183,7 @@ export default function NoteEditor() {
             {selectedTags.map((t) => (
               <span
                 key={t.id}
-                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11.5px] bg-ink-850 border border-ink-700/40 text-zinc-200"
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11.5px] bg-paper-100 dark:bg-ink-850 border border-paper-300/40 dark:border-ink-700/40 text-zinc-700 dark:text-zinc-200"
               >
                 <span className={`w-1.5 h-1.5 rounded-full ${t.dot}`} />
                 <span className="text-zinc-500">#</span>
@@ -199,19 +199,19 @@ export default function NoteEditor() {
             ))}
             <button
               onClick={() => setTagPickerOpen((v) => !v)}
-              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11.5px] border border-dashed border-ink-700/60 text-zinc-500 hover:text-indigo-300 hover:border-indigo-500/40 transition"
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11.5px] border border-dashed border-paper-300/60 dark:border-ink-700/60 text-zinc-500 hover:text-emerald-600 hover:border-emerald-500/40 transition"
             >
               <TagIcon className="w-2.5 h-2.5" />
               {selectedTags.length === 0 ? 'Thêm tag' : 'Sửa tag'}
             </button>
 
             {tagPickerOpen && (
-              <div className="absolute left-0 top-full mt-1 z-30 card-surface bg-ink-900 shadow-2xl py-1 w-72 max-h-72 overflow-y-auto animate-fade-in">
-                <div className="px-3 py-1.5 text-[10px] uppercase tracking-wider text-zinc-500 font-medium border-b border-ink-700/60 flex items-center justify-between">
+              <div className="absolute left-0 top-full mt-1 z-30 card-surface bg-white dark:bg-ink-900 shadow-2xl py-1 w-72 max-h-72 overflow-y-auto animate-fade-in">
+                <div className="px-3 py-1.5 text-[10px] uppercase tracking-wider text-zinc-500 font-medium border-b border-paper-300/60 dark:border-ink-700/60 flex items-center justify-between">
                   <span>Chọn tag (multi-select)</span>
                   <button
                     onClick={() => setTagPickerOpen(false)}
-                    className="text-zinc-500 hover:text-zinc-200"
+                    className="text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-200"
                   >
                     <X className="w-3 h-3" />
                   </button>
@@ -224,8 +224,8 @@ export default function NoteEditor() {
                       onClick={() => toggleTag(t.id)}
                       className={`w-full flex items-center justify-between gap-2 px-3 py-1.5 text-[12.5px] transition ${
                         isSelected
-                          ? 'bg-indigo-500/10 text-indigo-100'
-                          : 'text-zinc-300 hover:bg-ink-800'
+                          ? 'bg-emerald-500/10 text-emerald-900 dark:text-emerald-100'
+                          : 'text-zinc-600 dark:text-zinc-300 hover:bg-paper-100 dark:hover:bg-ink-800'
                       }`}
                     >
                       <div className="flex items-center gap-2 min-w-0">
@@ -235,7 +235,7 @@ export default function NoteEditor() {
                           {t.name}
                         </span>
                       </div>
-                      {isSelected && <Check className="w-3 h-3 text-indigo-300" />}
+                      {isSelected && <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-300" />}
                     </button>
                   )
                 })}
@@ -247,13 +247,13 @@ export default function NoteEditor() {
         <div className="flex items-center gap-2 shrink-0">
           {/* Read / Edit toggle — chỉ hiện khi không phải note mới */}
           {!isNew && (
-            <div className="flex p-0.5 rounded-lg bg-ink-850 border border-ink-700/60">
+            <div className="flex p-0.5 rounded-lg bg-paper-200 dark:bg-ink-850 border border-paper-300/60 dark:border-ink-700/60">
               <button
                 onClick={() => setMode('read')}
                 className={`px-2.5 py-1 rounded text-[11px] font-medium flex items-center gap-1.5 transition ${
                   mode === 'read'
-                    ? 'bg-ink-800 text-zinc-100'
-                    : 'text-zinc-500 hover:text-zinc-300'
+                    ? 'bg-paper-300 dark:bg-ink-800 text-zinc-900 dark:text-zinc-100'
+                    : 'text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300'
                 }`}
               >
                 <Eye className="w-3 h-3" />
@@ -263,8 +263,8 @@ export default function NoteEditor() {
                 onClick={() => setMode('edit')}
                 className={`px-2.5 py-1 rounded text-[11px] font-medium flex items-center gap-1.5 transition ${
                   mode === 'edit'
-                    ? 'bg-ink-800 text-zinc-100'
-                    : 'text-zinc-500 hover:text-zinc-300'
+                    ? 'bg-paper-300 dark:bg-ink-800 text-zinc-900 dark:text-zinc-100'
+                    : 'text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300'
                 }`}
               >
                 <Pencil className="w-3 h-3" />
@@ -273,13 +273,13 @@ export default function NoteEditor() {
             </div>
           )}
           {!isNew && (
-            <button className="px-3 py-1.5 rounded-lg text-xs text-zinc-400 hover:text-zinc-100 hover:bg-ink-850 transition">
+            <button className="px-3 py-1.5 rounded-lg text-xs text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-paper-200 dark:hover:bg-ink-850 transition">
               Xem graph
             </button>
           )}
           <button
             onClick={handleSave}
-            className="px-3 py-1.5 rounded-lg text-xs bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition flex items-center gap-1.5 shadow-lg shadow-indigo-500/20"
+            className="px-3 py-1.5 rounded-lg text-xs bg-emerald-500 hover:bg-emerald-400 text-white font-medium transition flex items-center gap-1.5 shadow-lg shadow-emerald-500/20"
           >
             <RefreshCw className="w-3 h-3" />
             {isNew ? 'Lưu & phân rã' : 'Lưu & phân rã lại'}
@@ -289,7 +289,7 @@ export default function NoteEditor() {
 
       <div className="grid grid-cols-12 gap-6">
         {/* Note body */}
-        <div className="col-span-12 lg:col-span-7 card-surface p-8 bg-ink-900/40">
+        <div className="col-span-12 lg:col-span-7 card-surface p-8 bg-paper-50/60 dark:bg-ink-900/40">
           {mode === 'edit' && (
             <InputToolbar
               onVoice={() => setVoiceState('recording')}
@@ -330,7 +330,7 @@ export default function NoteEditor() {
 
           {/* Legend — chỉ hiện cho note đã có hạt */}
           {!isNew && (
-            <div className="mt-8 pt-5 border-t border-ink-700/40 flex items-center gap-4 text-[10px] text-zinc-500 flex-wrap">
+            <div className="mt-8 pt-5 border-t border-paper-300/40 dark:border-ink-700/40 flex items-center gap-4 text-[10px] text-zinc-500 flex-wrap">
               <span className="uppercase tracking-wider font-medium">
                 {mode === 'read' ? 'Highlight' : 'Bạn sửa, AI sẽ tách lại'}
               </span>
@@ -345,13 +345,13 @@ export default function NoteEditor() {
         {/* Right panel */}
         <div className="col-span-12 lg:col-span-5 space-y-4">
           {/* Engine status */}
-          <div className="card-surface p-4 bg-gradient-to-br from-indigo-500/5 to-violet-500/5 border-indigo-500/20">
+          <div className="card-surface p-4 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 border-emerald-500/20">
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-7 h-7 rounded-lg bg-indigo-500/20 flex items-center justify-center">
-                <Layers className="w-3.5 h-3.5 text-indigo-300" />
+              <div className="w-7 h-7 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                <Layers className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-300" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-[13px] font-medium text-zinc-100 flex items-center gap-2">
+                <div className="text-[13px] font-medium text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
                   Atomic Knowledge Engine
                   {isNew ? (
                     <span className="text-[10px] text-zinc-500 font-normal">
@@ -381,13 +381,13 @@ export default function NoteEditor() {
             <div className="card-surface p-4">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <Atom className="w-3.5 h-3.5 text-indigo-400" />
+                  <Atom className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                   <h3 className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium">
                     Hạt được tách ({note.detectedAtoms.length})
                   </h3>
                   <AiTag>AI tách · bạn duyệt</AiTag>
                 </div>
-                <button className="text-[11px] text-zinc-500 hover:text-zinc-300">
+                <button className="text-[11px] text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300">
                   Tất cả ↓
                 </button>
               </div>
@@ -401,7 +401,7 @@ export default function NoteEditor() {
                   />
                 ))}
               </div>
-              <button className="w-full mt-3 py-2 rounded-lg border border-dashed border-ink-700 text-[12px] text-zinc-500 hover:text-zinc-300 hover:border-ink-600 transition flex items-center justify-center gap-1.5">
+              <button className="w-full mt-3 py-2 rounded-lg border border-dashed border-paper-300 dark:border-ink-700 text-[12px] text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:border-paper-400 dark:hover:border-ink-600 transition flex items-center justify-center gap-1.5">
                 <Plus className="w-3 h-3" />
                 Thêm hạt thủ công
                 <ManualTag />
@@ -412,14 +412,14 @@ export default function NoteEditor() {
           {/* Empty state cho note mới */}
           {isNew && (
             <div className="card-surface p-5 text-center">
-              <div className="w-10 h-10 rounded-xl bg-ink-850 flex items-center justify-center mx-auto mb-2">
+              <div className="w-10 h-10 rounded-xl bg-paper-200 dark:bg-ink-850 flex items-center justify-center mx-auto mb-2">
                 <Atom className="w-4 h-4 text-zinc-500" />
               </div>
-              <div className="text-[13px] text-zinc-300 mb-1">
+              <div className="text-[13px] text-zinc-600 dark:text-zinc-300 mb-1">
                 Chưa có hạt nào
               </div>
               <div className="text-[11px] text-zinc-500 leading-relaxed">
-                Cứ gõ tự nhiên — sau khi bạn bấm <b className="text-zinc-300">Lưu & phân rã</b>,
+                Cứ gõ tự nhiên — sau khi bạn bấm <b className="text-zinc-700 dark:text-zinc-300">Lưu & phân rã</b>,
                 <br />AI sẽ tách hạt và hiện tại đây để bạn duyệt.
               </div>
             </div>
@@ -438,15 +438,15 @@ export default function NoteEditor() {
               <div className="space-y-2.5">
                 {note.insights.map((ins, i) => {
                   const cfg = {
-                    related: { Icon: Link2, color: 'text-sky-300' },
-                    gap: { Icon: CircleDashed, color: 'text-emerald-300' },
-                    conflict: { Icon: AlertTriangle, color: 'text-rose-300' },
-                    merge: { Icon: GitMerge, color: 'text-amber-300' },
+                    related: { Icon: Link2, color: 'text-sky-600 dark:text-sky-300' },
+                    gap: { Icon: CircleDashed, color: 'text-emerald-600 dark:text-emerald-300' },
+                    conflict: { Icon: AlertTriangle, color: 'text-rose-600 dark:text-rose-300' },
+                    merge: { Icon: GitMerge, color: 'text-amber-600 dark:text-amber-300' },
                   }[ins.kind]
                   return (
                     <div key={i} className="flex items-start gap-2.5">
                       <cfg.Icon className={`w-3.5 h-3.5 ${cfg.color} mt-0.5 shrink-0`} />
-                      <p className="text-[12px] text-zinc-300 leading-relaxed">
+                      <p className="text-[12px] text-zinc-600 dark:text-zinc-300 leading-relaxed">
                         {ins.text}
                       </p>
                     </div>
@@ -465,7 +465,7 @@ export default function NoteEditor() {
 
 function InputToolbar({ onVoice, onImage }) {
   return (
-    <div className="flex items-center justify-between mb-4 pb-3 border-b border-ink-700/40">
+    <div className="flex items-center justify-between mb-4 pb-3 border-b border-paper-300/40 dark:border-ink-700/40">
       <div className="flex items-center gap-1">
         <ToolbarBtn icon={Mic} label="Ghi âm" onClick={onVoice} />
         <ToolbarBtn icon={ImageIcon} label="Ảnh / OCR" onClick={onImage} />
@@ -483,7 +483,7 @@ function ToolbarBtn({ icon: Icon, label, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-1.5 px-2 py-1 rounded-md text-[11.5px] text-zinc-400 hover:text-indigo-300 hover:bg-ink-850 transition"
+      className="flex items-center gap-1.5 px-2 py-1 rounded-md text-[11.5px] text-zinc-500 hover:text-emerald-600 hover:bg-paper-200 dark:hover:bg-ink-850 transition"
     >
       <Icon className="w-3 h-3" />
       {label}
@@ -505,7 +505,7 @@ function VoicePanel({ state, setState, onTranscript }) {
             <Square className="w-4 h-4 text-white fill-white" />
           </button>
         ) : (
-          <div className="w-12 h-12 rounded-full bg-ink-800 border border-indigo-500/30 flex items-center justify-center shrink-0">
+          <div className="w-12 h-12 rounded-full bg-paper-200 dark:bg-ink-800 border border-emerald-500/30 flex items-center justify-center shrink-0">
             <CheckCircle2 className="w-5 h-5 text-emerald-400" />
           </div>
         )}
@@ -531,7 +531,7 @@ function VoicePanel({ state, setState, onTranscript }) {
           )}
           {state === 'done' && (
             <>
-              <div className="text-[12.5px] text-zinc-200 font-medium mb-0.5">
+              <div className="text-[12.5px] text-zinc-700 dark:text-zinc-200 font-medium mb-0.5">
                 Đã thu xong · transcript sẵn sàng
               </div>
               <div className="text-[10.5px] text-zinc-500">
@@ -548,14 +548,14 @@ function VoicePanel({ state, setState, onTranscript }) {
                   '[Voice transcript] — Trong tác phẩm The Structure of Scientific Revolutions, Kuhn lập luận rằng khoa học không tiến hoá tuyến tính...',
                 )
               }
-              className="px-2.5 py-1 rounded-md text-[11px] bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition"
+              className="px-2.5 py-1 rounded-md text-[11px] bg-emerald-500 hover:bg-emerald-400 text-white font-medium transition"
             >
               Chèn vào note
             </button>
           )}
           <button
             onClick={() => setState('idle')}
-            className="p-1 rounded text-zinc-500 hover:text-zinc-200 hover:bg-ink-800"
+            className="p-1 rounded text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-paper-200 dark:hover:bg-ink-800"
           >
             <X className="w-3.5 h-3.5" />
           </button>
@@ -569,22 +569,22 @@ function VoicePanel({ state, setState, onTranscript }) {
 
 function ImagePanel({ onClose }) {
   return (
-    <div className="mb-4 rounded-xl border border-indigo-500/30 bg-indigo-500/5 p-4">
+    <div className="mb-4 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
       <div className="flex items-center justify-between mb-3">
-        <div className="text-[12px] font-medium text-zinc-200 flex items-center gap-2">
-          <ImageIcon className="w-3.5 h-3.5 text-indigo-300" />
+        <div className="text-[12px] font-medium text-zinc-700 dark:text-zinc-200 flex items-center gap-2">
+          <ImageIcon className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-300" />
           Chèn ảnh — OCR sẽ chạy ngầm sau khi lưu
         </div>
         <button
           onClick={onClose}
-          className="p-1 rounded text-zinc-500 hover:text-zinc-200 hover:bg-ink-800"
+          className="p-1 rounded text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-paper-200 dark:hover:bg-ink-800"
         >
           <X className="w-3.5 h-3.5" />
         </button>
       </div>
-      <div className="rounded-lg border-2 border-dashed border-ink-700 hover:border-indigo-500/40 transition p-4 text-center cursor-pointer bg-ink-850/40">
+      <div className="rounded-lg border-2 border-dashed border-paper-300 dark:border-ink-700 hover:border-emerald-500/40 transition p-4 text-center cursor-pointer bg-paper-100/40 dark:bg-ink-850/40">
         <Plus className="w-4 h-4 text-zinc-400 mx-auto mb-1.5" />
-        <p className="text-[12px] text-zinc-300">Kéo thả ảnh hoặc bấm để chọn</p>
+        <p className="text-[12px] text-zinc-600 dark:text-zinc-300">Kéo thả ảnh hoặc bấm để chọn</p>
         <p className="text-[10.5px] text-zinc-500 mt-0.5">Whiteboard · slide · trang sách</p>
       </div>
     </div>
@@ -595,11 +595,11 @@ function ImagePanel({ onClose }) {
 
 function ReadBody({ note, activeAtom, setActiveAtom }) {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="max-w-none">
       {note.body.map((block, i) => (
         <p
           key={i}
-          className="text-[16px] leading-[1.85] text-zinc-200 font-serif mb-5 last:mb-0"
+          className="text-[16px] leading-[1.85] text-zinc-700 dark:text-zinc-200 font-serif mb-5 last:mb-0"
         >
           {block.segments.map((seg, j) => {
             if (seg.atomId) {
@@ -619,7 +619,7 @@ function ReadBody({ note, activeAtom, setActiveAtom }) {
             }
             if (seg.italic) {
               return (
-                <em key={j} className="text-zinc-300">
+                <em key={j} className="text-zinc-600 dark:text-zinc-300">
                   {seg.text}
                 </em>
               )
@@ -645,14 +645,14 @@ function EditBody({ draft, setDraft, isNew }) {
             ? 'Bắt đầu gõ ở đây — không cần đặt tiêu đề trước, không cần chọn thư mục...'
             : ''
         }
-        className="w-full bg-transparent text-[16px] leading-[1.85] font-serif text-zinc-200 placeholder:text-zinc-600 focus:outline-none resize-none"
+        className="w-full bg-transparent text-[16px] leading-[1.85] font-serif text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none resize-none"
       />
       {!isNew && (
-        <div className="mt-4 rounded-lg border border-indigo-500/20 bg-indigo-500/5 p-3 flex items-start gap-2.5">
-          <Wand2 className="w-3.5 h-3.5 text-indigo-300 mt-0.5 shrink-0" />
-          <div className="text-[11.5px] text-zinc-300 leading-relaxed">
-            <span className="text-indigo-200 font-medium">Sau khi lưu</span>, AI sẽ phân rã lại: hạt cũ giữ nguyên ID nếu nội dung không đổi, hạt mới được tạo, hạt biến mất sẽ chuyển sang trạng thái{' '}
-            <span className="text-zinc-100">"đề xuất xoá"</span> để bạn xác nhận.
+        <div className="mt-4 rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-3 flex items-start gap-2.5">
+          <Wand2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-300 mt-0.5 shrink-0" />
+          <div className="text-[11.5px] text-zinc-600 dark:text-zinc-300 leading-relaxed">
+            <span className="text-emerald-700 dark:text-emerald-200 font-medium">Sau khi lưu</span>, AI sẽ phân rã lại: hạt cũ giữ nguyên ID nếu nội dung không đổi, hạt mới được tạo, hạt biến mất sẽ chuyển sang trạng thái{' '}
+            <span className="text-zinc-800 dark:text-zinc-100">"đề xuất xoá"</span> để bạn xác nhận.
           </div>
         </div>
       )}
@@ -673,8 +673,8 @@ function AtomRow({ atom, isActive, onHover }) {
       onMouseLeave={() => onHover(null)}
       className={`group rounded-lg border transition ${
         isActive
-          ? 'bg-ink-800 border-indigo-500/40'
-          : 'bg-ink-850/50 border-ink-700/40 hover:bg-ink-800'
+          ? 'bg-paper-200 dark:bg-ink-800 border-emerald-500/40'
+          : 'bg-paper-100/50 dark:bg-ink-850/50 border-paper-300/40 dark:border-ink-700/40 hover:bg-paper-200 dark:hover:bg-ink-800'
       }`}
     >
       <div className="p-3">
@@ -697,15 +697,15 @@ function AtomRow({ atom, isActive, onHover }) {
             autoFocus
             onChange={(e) => setContent(e.target.value)}
             rows={3}
-            className="w-full bg-ink-900 border border-indigo-500/40 rounded p-2 text-[13px] text-zinc-100 font-serif leading-relaxed focus:outline-none resize-none"
+            className="w-full bg-paper-50 dark:bg-ink-900 border border-emerald-500/40 rounded p-2 text-[13px] text-zinc-900 dark:text-zinc-100 font-serif leading-relaxed focus:outline-none resize-none"
           />
         ) : (
-          <p className="text-[13px] text-zinc-200 leading-relaxed font-serif">
+          <p className="text-[13px] text-zinc-700 dark:text-zinc-200 leading-relaxed font-serif">
             {content}
           </p>
         )}
 
-        <div className="mt-2 pt-2 border-t border-ink-700/30 flex items-center gap-0.5 opacity-60 group-hover:opacity-100 transition">
+        <div className="mt-2 pt-2 border-t border-paper-300/30 dark:border-ink-700/30 flex items-center gap-0.5 opacity-60 group-hover:opacity-100 transition">
           {editing ? (
             <>
               <RowAction
@@ -752,7 +752,7 @@ function RowAction({ icon: Icon, label, tone, onClick }) {
     <button
       onClick={onClick}
       className={`flex items-center gap-1 px-1.5 py-1 rounded text-[10.5px] transition ${
-        tones[tone] || 'text-zinc-500 hover:text-zinc-200 hover:bg-ink-800'
+        tones[tone] || 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-paper-200 dark:hover:bg-ink-800'
       }`}
     >
       <Icon className="w-2.5 h-2.5" />
@@ -787,7 +787,7 @@ function StatusBadge({ status }) {
 
 function AiTag({ children = 'AI' }) {
   return (
-    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9.5px] font-medium bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9.5px] font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/20">
       <Cpu className="w-2.5 h-2.5" />
       {children}
     </span>

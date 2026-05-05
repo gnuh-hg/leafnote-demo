@@ -5,7 +5,7 @@ import { TYPE_STYLES } from '../components/AtomCard'
 
 const PROJECT_COLOR = {
   p1: '#fbbf24', // amber
-  p2: '#818cf8', // indigo
+  p2: '#10b981', // emerald
   p3: '#38bdf8', // sky
   p4: '#34d399', // emerald
   p5: '#fb7185', // rose
@@ -28,7 +28,7 @@ export default function KnowledgeGraph() {
               <Network className="w-3 h-3" />
               <span>20 hạt · 23 liên kết · 5 cụm</span>
             </div>
-            <h1 className="font-serif text-4xl font-semibold tracking-tight text-zinc-50">
+            <h1 className="font-serif text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
               Bản đồ tri thức
             </h1>
             <p className="text-zinc-400 mt-1.5 text-sm">
@@ -38,13 +38,13 @@ export default function KnowledgeGraph() {
 
           {/* Toggle color mode */}
           <div className="flex items-center gap-2">
-            <div className="flex p-1 rounded-lg bg-ink-850 border border-ink-700/60">
+            <div className="flex p-1 rounded-lg bg-paper-200 dark:bg-ink-850 border border-paper-300/60 dark:border-ink-700/60">
               <button
                 onClick={() => setColorMode('cluster')}
                 className={`px-3 py-1.5 rounded text-[11px] font-medium transition ${
                   colorMode === 'cluster'
-                    ? 'bg-ink-800 text-zinc-100'
-                    : 'text-zinc-500 hover:text-zinc-300'
+                    ? 'bg-paper-300 dark:bg-ink-800 text-zinc-900 dark:text-zinc-100'
+                    : 'text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300'
                 }`}
               >
                 Theo cụm
@@ -53,8 +53,8 @@ export default function KnowledgeGraph() {
                 onClick={() => setColorMode('retention')}
                 className={`px-3 py-1.5 rounded text-[11px] font-medium transition ${
                   colorMode === 'retention'
-                    ? 'bg-ink-800 text-zinc-100'
-                    : 'text-zinc-500 hover:text-zinc-300'
+                    ? 'bg-paper-300 dark:bg-ink-800 text-zinc-900 dark:text-zinc-100'
+                    : 'text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300'
                 }`}
               >
                 Theo retention
@@ -66,7 +66,7 @@ export default function KnowledgeGraph() {
 
       <div className="flex-1 px-8 pb-8 max-w-[1500px] mx-auto w-full grid grid-cols-12 gap-4 min-h-0">
         {/* Graph canvas */}
-        <div className="col-span-12 lg:col-span-9 relative card-surface bg-ink-900/40 overflow-hidden">
+        <div className="col-span-12 lg:col-span-9 relative card-surface bg-paper-100/40 dark:bg-ink-900/40 overflow-hidden">
           <svg
             viewBox="0 0 1400 700"
             className="w-full h-full"
@@ -211,7 +211,7 @@ export default function KnowledgeGraph() {
                       className="w-2 h-2 rounded-full"
                       style={{ background: PROJECT_COLOR[p.id] }}
                     />
-                    <span className="text-zinc-300">{p.name}</span>
+                    <span className="text-zinc-600 dark:text-zinc-300">{p.name}</span>
                   </div>
                 ))}
               </>
@@ -231,12 +231,12 @@ export default function KnowledgeGraph() {
                       className="w-2 h-2 rounded-full"
                       style={{ background: b.c }}
                     />
-                    <span className="text-zinc-300">{b.l}</span>
+                    <span className="text-zinc-600 dark:text-zinc-300">{b.l}</span>
                   </div>
                 ))}
               </>
             )}
-            <div className="border-t border-ink-700/60 pt-1.5 mt-1.5">
+            <div className="border-t border-paper-300/60 dark:border-ink-700/60 pt-1.5 mt-1.5">
               <div className="flex items-center gap-2">
                 <div
                   className="w-4 h-px"
@@ -279,10 +279,10 @@ export default function KnowledgeGraph() {
                       className="w-1.5 h-1.5 rounded-full"
                       style={{ background: PROJECT_COLOR[p.id] }}
                     />
-                    <span className="text-[12px] text-zinc-300 flex-1 truncate">
+                    <span className="text-[12px] text-zinc-600 dark:text-zinc-300 flex-1 truncate">
                       {p.name}
                     </span>
-                    <div className="w-12 h-1 bg-ink-700 rounded-full overflow-hidden">
+                    <div className="w-12 h-1 bg-paper-300 dark:bg-ink-700 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-gradient-to-r from-orange-400 to-rose-400"
                         style={{ width: `${p.heat * 100}%` }}
@@ -347,12 +347,12 @@ function NodeDetail({ atom, onClear }) {
         </span>
         <button
           onClick={onClear}
-          className="text-[11px] text-zinc-500 hover:text-zinc-300"
+          className="text-[11px] text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
         >
           Bỏ chọn
         </button>
       </div>
-      <p className="text-[14px] text-zinc-100 font-serif leading-relaxed mb-4">
+      <p className="text-[14px] text-zinc-800 dark:text-zinc-100 font-serif leading-relaxed mb-4">
         {atom.content}
       </p>
       <div className="space-y-2 text-[11px]">
@@ -369,7 +369,7 @@ function Row({ label, value }) {
   return (
     <div className="flex justify-between">
       <span className="text-zinc-500">{label}</span>
-      <span className="text-zinc-200 font-medium">{value}</span>
+      <span className="text-zinc-700 dark:text-zinc-200 font-medium">{value}</span>
     </div>
   )
 }
@@ -377,7 +377,7 @@ function Row({ label, value }) {
 function EmptyDetail() {
   return (
     <div className="card-surface p-6 text-center">
-      <div className="w-10 h-10 rounded-full bg-ink-800 flex items-center justify-center mx-auto mb-3">
+      <div className="w-10 h-10 rounded-full bg-paper-200 dark:bg-ink-800 flex items-center justify-center mx-auto mb-3">
         <Eye className="w-4 h-4 text-zinc-500" />
       </div>
       <p className="text-[12px] text-zinc-400 leading-relaxed">

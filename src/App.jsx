@@ -10,7 +10,7 @@ import NotesList from './pages/NotesList'
 
 export default function App() {
   return (
-    <div className="flex h-screen bg-ink-950 text-zinc-100 overflow-hidden">
+    <div className="flex h-screen bg-paper-50 dark:bg-ink-950 text-zinc-900 dark:text-zinc-100 overflow-hidden transition-colors duration-200">
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopBar />

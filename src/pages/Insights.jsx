@@ -20,7 +20,7 @@ export default function Insights() {
           <Brain className="w-3 h-3" />
           Cập nhật theo từng phiên ôn · {cognitiveProfile.totalReviews} review tính đến nay
         </div>
-        <h1 className="font-serif text-[44px] leading-tight font-semibold tracking-tight text-zinc-50">
+        <h1 className="font-serif text-[44px] leading-tight font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
           Hồ sơ nhận thức của bạn
         </h1>
         <p className="text-zinc-400 mt-2 max-w-2xl">
@@ -40,7 +40,7 @@ export default function Insights() {
           icon={Activity}
           label="Retention TB"
           value={`${Math.round(cognitiveProfile.avgRetention * 100)}%`}
-          accent="indigo"
+          accent="emerald"
         />
         <BigStat
           icon={Flame}
@@ -62,18 +62,18 @@ export default function Insights() {
           <div className="flex items-start justify-between mb-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <TrendingUp className="w-3.5 h-3.5 text-indigo-400" />
+                <TrendingUp className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" />
                 <h3 className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium">
                   Forgetting curve cá nhân hoá
                 </h3>
               </div>
-              <p className="text-sm text-zinc-300">
+              <p className="text-sm text-zinc-600 dark:text-zinc-300">
                 Bạn quên nhanh hơn FSRS mặc định khoảng{' '}
                 <span className="text-rose-300 font-medium">22%</span>. Leafnote đã rút ngắn interval review.
               </p>
             </div>
             <div className="flex items-center gap-3 text-[10px]">
-              <Legend color="#818cf8" label="Bạn" />
+              <Legend color="#10b981" label="Bạn" />
               <Legend color="#3d3d4f" label="FSRS mặc định" dashed />
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function Insights() {
               <div key={i}>
                 <div className="flex items-baseline justify-between mb-1">
                   <span className="text-[12px] text-zinc-500">{t.label}</span>
-                  <span className="text-sm text-indigo-300 font-medium">
+                  <span className="text-sm text-emerald-600 dark:text-emerald-300 font-medium">
                     {t.value}
                   </span>
                 </div>
@@ -115,7 +115,7 @@ export default function Insights() {
                   Bản đồ nhiệt chủ đề · 12 tuần gần nhất
                 </h3>
               </div>
-              <p className="text-sm text-zinc-300">
+              <p className="text-sm text-zinc-600 dark:text-zinc-300">
                 Cụm nào đang phát triển, cụm nào đang lạnh dần — Leafnote dùng dữ liệu này để chọn hạt cần surface.
               </p>
             </div>
@@ -161,26 +161,26 @@ export default function Insights() {
         </div>
 
         {/* Adaptations */}
-        <div className="col-span-12 lg:col-span-6 card-surface p-6 bg-gradient-to-br from-indigo-500/5 to-violet-500/5 border-indigo-500/20">
+        <div className="col-span-12 lg:col-span-6 card-surface p-6 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 border-emerald-500/20">
           <div className="flex items-center gap-2 mb-4">
-            <Layers className="w-3.5 h-3.5 text-indigo-400" />
-            <h3 className="text-[11px] uppercase tracking-wider text-indigo-300 font-medium">
+            <Layers className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+            <h3 className="text-[11px] uppercase tracking-wider text-emerald-600 dark:text-emerald-300 font-medium">
               Leafnote đã điều chỉnh cho bạn
             </h3>
           </div>
-          <div className="space-y-3 text-[13px] leading-relaxed text-zinc-200">
+          <div className="space-y-3 text-[13px] leading-relaxed text-zinc-700 dark:text-zinc-200">
             <Adapt>
               Rút ngắn interval review trung bình{' '}
-              <span className="text-indigo-300 font-medium">×1.2</span> sau khi
+              <span className="text-emerald-600 dark:text-emerald-300 font-medium">×1.2</span> sau khi
               phát hiện forgetting curve dốc.
             </Adapt>
             <Adapt>
-              Ưu tiên format <span className="text-indigo-300 font-medium">cloze + ứng dụng</span>{' '}
+              Ưu tiên format <span className="text-emerald-600 dark:text-emerald-300 font-medium">cloze + ứng dụng</span>{' '}
               cho hạt mới sinh, giảm sinh "định nghĩa ngược".
             </Adapt>
             <Adapt>
               Phân rã hạt mịn hơn (
-              <span className="text-indigo-300 font-medium">~22 từ/hạt</span>) — bạn nhớ tốt hơn ở granularity này.
+              <span className="text-emerald-600 dark:text-emerald-300 font-medium">~22 từ/hạt</span>) — bạn nhớ tốt hơn ở granularity này.
             </Adapt>
             <Adapt>
               Surfacing chủ động khi mở project Triết học khoa học, giảm khi mở Sinh học (cụm ngủ đông).
@@ -194,8 +194,9 @@ export default function Insights() {
 
 function BigStat({ icon: Icon, label, value, unit, accent }) {
   const accentMap = {
-    indigo: 'text-indigo-300',
-    amber: 'text-amber-300',
+    indigo: 'text-emerald-600 dark:text-emerald-300',
+    emerald: 'text-emerald-600 dark:text-emerald-300',
+    amber: 'text-amber-600 dark:text-amber-300',
   }
   return (
     <div className="card-surface p-5">
@@ -206,7 +207,7 @@ function BigStat({ icon: Icon, label, value, unit, accent }) {
       <div className="flex items-baseline gap-1.5">
         <span
           className={`font-serif text-3xl font-semibold tabular-nums ${
-            accentMap[accent] || 'text-zinc-100'
+            accentMap[accent] || 'text-zinc-800 dark:text-zinc-100'
           }`}
         >
           {value}
@@ -348,7 +349,7 @@ function Heatmap() {
       </div>
       {topicHeatmap.map((row) => (
         <div key={row.project} className="flex items-center gap-2">
-          <div className="w-32 text-[12px] text-zinc-300 truncate">
+          <div className="w-32 text-[12px] text-zinc-600 dark:text-zinc-300 truncate">
             {row.project}
           </div>
           <div className="flex-1 flex gap-1">
@@ -385,12 +386,12 @@ function Signal({ label, detail, strength }) {
   return (
     <div>
       <div className="flex items-center justify-between mb-1">
-        <span className="text-[13px] text-zinc-200">{label}</span>
+        <span className="text-[13px] text-zinc-700 dark:text-zinc-200">{label}</span>
         <span className="text-[10px] text-zinc-500 tabular-nums">
           {Math.round(strength * 100)}%
         </span>
       </div>
-      <div className="h-1 rounded-full bg-ink-700 overflow-hidden mb-1">
+      <div className="h-1 rounded-full bg-paper-300 dark:bg-ink-700 overflow-hidden mb-1">
         <div
           className="h-full bg-gradient-to-r from-emerald-500 to-teal-400"
           style={{ width: `${strength * 100}%` }}
@@ -404,7 +405,7 @@ function Signal({ label, detail, strength }) {
 function Adapt({ children }) {
   return (
     <div className="flex items-start gap-2.5">
-      <span className="mt-1.5 w-1 h-1 rounded-full bg-indigo-400 shrink-0" />
+      <span className="mt-1.5 w-1 h-1 rounded-full bg-emerald-400 shrink-0" />
       <p>{children}</p>
     </div>
   )

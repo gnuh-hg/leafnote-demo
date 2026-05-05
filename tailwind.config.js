@@ -20,6 +20,13 @@ export default {
           700: '#2e2e3d',
           600: '#3d3d4f',
         },
+        paper: {
+          50: '#f8faf8',
+          100: '#f0f4f0',
+          200: '#e2eae2',
+          300: '#c8d8c8',
+          400: '#a0bba0',
+        },
       },
       animation: {
         'pulse-soft': 'pulse-soft 3s ease-in-out infinite',

@@ -13,7 +13,7 @@ import { TYPE_STYLES } from '../components/AtomCard'
 const DIFFICULTIES = [
   { id: 'forgot', label: 'Quên', detail: '< 1 ngày', color: 'bg-rose-500 hover:bg-rose-400', text: 'text-white' },
   { id: 'hard', label: 'Khó', detail: '2 ngày', color: 'bg-amber-500 hover:bg-amber-400', text: 'text-white' },
-  { id: 'good', label: 'Vừa', detail: '6 ngày', color: 'bg-indigo-500 hover:bg-indigo-400', text: 'text-white' },
+  { id: 'good', label: 'Vừa', detail: '6 ngày', color: 'bg-emerald-500 hover:bg-emerald-400', text: 'text-white' },
   { id: 'easy', label: 'Dễ', detail: '14 ngày', color: 'bg-emerald-500 hover:bg-emerald-400', text: 'text-white' },
 ]
 
@@ -47,13 +47,13 @@ export default function ReviewFeed() {
       {/* Header */}
       <div className="w-full max-w-2xl mb-8">
         <div className="flex items-center justify-between mb-3">
-          <button className="text-zinc-500 hover:text-zinc-300 text-xs flex items-center gap-1">
+          <button className="text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 text-xs flex items-center gap-1">
             <ArrowLeft className="w-3 h-3" />
             Thoát phiên
           </button>
           <div className="flex items-center gap-3 text-xs">
             <span className="text-zinc-500">
-              <span className="text-zinc-200 font-medium">{idx + 1}</span>
+              <span className="text-zinc-700 dark:text-zinc-200 font-medium">{idx + 1}</span>
               <span className="text-zinc-600"> / {queue.length}</span>
             </span>
             <span className="text-zinc-700">·</span>
@@ -63,9 +63,9 @@ export default function ReviewFeed() {
             </span>
           </div>
         </div>
-        <div className="h-1 rounded-full bg-ink-800 overflow-hidden">
+        <div className="h-1 rounded-full bg-paper-300 dark:bg-ink-800 overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-300"
+            className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -73,7 +73,7 @@ export default function ReviewFeed() {
 
       {/* Card */}
       <div className="w-full max-w-2xl">
-        <div className="card-surface p-8 bg-ink-900/60 animate-slide-up" key={idx}>
+        <div className="card-surface p-8 bg-paper-50/60 dark:bg-ink-900/60 animate-slide-up" key={idx}>
           {/* Type + meta */}
           <div className="flex items-center justify-between mb-6">
             <span className={`pill border ${T.color}`}>
@@ -99,7 +99,7 @@ export default function ReviewFeed() {
               <Brain className="w-3 h-3" />
               Câu hỏi
             </div>
-            <p className="text-2xl leading-relaxed font-serif text-zinc-50">
+            <p className="text-2xl leading-relaxed font-serif text-zinc-900 dark:text-zinc-50">
               {question.q}
             </p>
           </div>
@@ -112,22 +112,22 @@ export default function ReviewFeed() {
                 Đáp án
               </div>
               <div className="rounded-xl bg-emerald-500/5 border border-emerald-500/20 p-5">
-                <p className="text-[15px] leading-relaxed text-zinc-100 font-serif">
+                <p className="text-[15px] leading-relaxed text-zinc-800 dark:text-zinc-100 font-serif">
                   {question.a}
                 </p>
               </div>
-              <div className="mt-4 rounded-xl bg-ink-850/60 border border-ink-700/40 p-4">
+              <div className="mt-4 rounded-xl bg-paper-100/60 dark:bg-ink-850/60 border border-paper-300/40 dark:border-ink-700/40 p-4">
                 <div className="text-[10px] uppercase tracking-wider text-zinc-500 mb-1.5 font-medium">
                   Hạt gốc
                 </div>
-                <p className="text-[13px] text-zinc-300 leading-relaxed">
+                <p className="text-[13px] text-zinc-600 dark:text-zinc-300 leading-relaxed">
                   {current.content}
                 </p>
               </div>
             </div>
           ) : (
-            <div className="mb-8 rounded-xl bg-ink-850/30 border border-dashed border-ink-700/60 p-8 text-center">
-              <div className="w-10 h-10 rounded-full bg-ink-800 flex items-center justify-center mx-auto mb-3">
+            <div className="mb-8 rounded-xl bg-paper-100/30 dark:bg-ink-850/30 border border-dashed border-paper-300/60 dark:border-ink-700/60 p-8 text-center">
+              <div className="w-10 h-10 rounded-full bg-paper-200 dark:bg-ink-800 flex items-center justify-center mx-auto mb-3">
                 <Eye className="w-4 h-4 text-zinc-500" />
               </div>
               <p className="text-sm text-zinc-400 mb-3">
@@ -135,7 +135,7 @@ export default function ReviewFeed() {
               </p>
               <button
                 onClick={() => setRevealed(true)}
-                className="px-4 py-2 rounded-lg bg-ink-800 hover:bg-ink-750 text-zinc-200 text-sm font-medium transition"
+                className="px-4 py-2 rounded-lg bg-paper-200 dark:bg-ink-800 hover:bg-paper-300 dark:hover:bg-ink-750 text-zinc-700 dark:text-zinc-200 text-sm font-medium transition"
               >
                 Hiện đáp án
               </button>
@@ -177,9 +177,9 @@ export default function ReviewFeed() {
 
 function MetaPill({ label, value }) {
   return (
-    <div className="card-surface px-3 py-2 flex items-center justify-between bg-ink-900/40">
+    <div className="card-surface px-3 py-2 flex items-center justify-between bg-paper-50/40 dark:bg-ink-900/40">
       <span className="text-zinc-500">{label}</span>
-      <span className="text-zinc-200 font-medium">{value}</span>
+      <span className="text-zinc-700 dark:text-zinc-200 font-medium">{value}</span>
     </div>
   )
 }
@@ -190,17 +190,17 @@ function Done({ count }) {
       <div className="w-16 h-16 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-5">
         <CheckCircle2 className="w-7 h-7 text-emerald-400" />
       </div>
-      <h2 className="font-serif text-3xl font-semibold text-zinc-50 mb-2">
+      <h2 className="font-serif text-3xl font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
         Xong phiên ôn hôm nay
       </h2>
       <p className="text-zinc-400 mb-8">
         Đã ôn {count} hạt · forgetting curve đã cập nhật
       </p>
       <div className="flex gap-3">
-        <button className="px-4 py-2 rounded-lg bg-ink-850 hover:bg-ink-800 text-zinc-200 text-sm font-medium transition">
+        <button className="px-4 py-2 rounded-lg bg-paper-200 dark:bg-ink-850 hover:bg-paper-300 dark:hover:bg-ink-800 text-zinc-700 dark:text-zinc-200 text-sm font-medium transition">
           Xem lại phiên
         </button>
-        <button className="px-4 py-2 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white text-sm font-medium transition">
+        <button className="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-medium transition">
           Quay về dashboard
           <ChevronRight className="w-4 h-4 inline ml-1" />
         </button>
