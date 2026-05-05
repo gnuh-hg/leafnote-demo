@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import {
   Sparkles,
   FileText,
@@ -7,11 +7,11 @@ import {
   Brain,
   BarChart3,
   Leaf,
-  ChevronDown,
   Plus,
+  Tag as TagIcon,
 } from 'lucide-react'
-import { projects } from '../data/mockData'
-import ProjectCreateModal from './ProjectCreateModal'
+import TagCreateModal from './TagCreateModal'
+import { useAppState } from '../context/AppState'
 
 const navItems = [
   { to: '/', label: 'Đang nổi lên', icon: Sparkles, badge: '12' },
@@ -22,8 +22,10 @@ const navItems = [
 ]
 
 export default function Sidebar() {
-  const active = projects.find((p) => p.active)
+  const { tags } = useAppState()
+  const navigate = useNavigate()
   const [showCreate, setShowCreate] = useState(false)
+
   return (
     <aside className="w-64 shrink-0 bg-ink-900/70 backdrop-blur-xl border-r border-ink-700/60 flex flex-col">
       {/* Wordmark */}
@@ -41,33 +43,6 @@ export default function Sidebar() {
               ghi chú có vòng đời
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Active project */}
-      <div className="px-4 py-4 border-b border-ink-700/40">
-        <div className="text-[10px] uppercase tracking-wider text-zinc-500 mb-2 font-medium">
-          Project đang mở
-        </div>
-        <button className="w-full flex items-center justify-between p-2.5 rounded-lg bg-ink-850 hover:bg-ink-800 border border-ink-700/40 transition group">
-          <div className="flex items-center gap-2">
-            <div
-              className={`w-2 h-2 rounded-full ${active.dot} animate-pulse-soft`}
-            />
-            <span className="text-sm font-medium text-zinc-100">
-              {active.name}
-            </span>
-          </div>
-          <ChevronDown className="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-300" />
-        </button>
-        <div className="mt-2 px-1 flex items-center gap-3 text-[11px] text-zinc-500">
-          <span>
-            <span className="text-zinc-300 font-medium">{active.atomCount}</span> hạt
-          </span>
-          <span>·</span>
-          <span>
-            <span className="text-zinc-300 font-medium">{active.noteCount}</span> ghi chú
-          </span>
         </div>
       </div>
 
@@ -98,35 +73,37 @@ export default function Sidebar() {
           </NavLink>
         ))}
 
+        {/* Tags */}
         <div className="pt-4 pb-1">
           <div className="flex items-center justify-between px-3 mb-1.5">
-            <div className="text-[10px] uppercase tracking-wider text-zinc-500 font-medium">
-              Tất cả project
+            <div className="text-[10px] uppercase tracking-wider text-zinc-500 font-medium flex items-center gap-1.5">
+              <TagIcon className="w-2.5 h-2.5" />
+              Tag
             </div>
             <button
               onClick={() => setShowCreate(true)}
               className="text-[10px] text-zinc-500 hover:text-indigo-300 flex items-center gap-0.5 transition"
-              title="Tạo project mới — bạn nhập tên + chọn màu"
+              title="Tạo tag mới"
             >
               <Plus className="w-2.5 h-2.5" />
               Mới
             </button>
           </div>
-          {projects.map((p) => (
+          {tags.map((t) => (
             <button
-              key={p.id}
-              className={`w-full flex items-center justify-between px-3 py-1.5 rounded-md text-[13px] transition ${
-                p.active
-                  ? 'text-zinc-100'
-                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-ink-850'
-              }`}
+              key={t.id}
+              onClick={() => navigate(`/notes?tag=${t.id}`)}
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-md text-[13px] text-zinc-400 hover:text-zinc-100 hover:bg-ink-850 transition group"
             >
               <div className="flex items-center gap-2 min-w-0">
-                <div className={`w-1.5 h-1.5 rounded-full ${p.dot} shrink-0`} />
-                <span className="truncate">{p.name}</span>
+                <div className={`w-1.5 h-1.5 rounded-full ${t.dot} shrink-0`} />
+                <span className="truncate">
+                  <span className="text-zinc-600 group-hover:text-zinc-500">#</span>
+                  {t.name}
+                </span>
               </div>
               <span className="text-[10px] text-zinc-600 shrink-0 ml-2">
-                {p.atomCount}
+                {t.noteCount}
               </span>
             </button>
           ))}
@@ -135,12 +112,12 @@ export default function Sidebar() {
             className="w-full mt-1 flex items-center gap-2 px-3 py-1.5 rounded-md text-[12px] text-zinc-500 hover:text-indigo-300 hover:bg-ink-850 border border-dashed border-ink-700/60 hover:border-indigo-500/40 transition"
           >
             <Plus className="w-3 h-3" />
-            <span>Tạo project mới</span>
+            <span>Tạo tag mới</span>
           </button>
         </div>
       </nav>
 
-      {showCreate && <ProjectCreateModal onClose={() => setShowCreate(false)} />}
+      {showCreate && <TagCreateModal onClose={() => setShowCreate(false)} />}
 
       {/* Cognitive snapshot */}
       <div className="p-4 border-t border-ink-700/40 bg-ink-900/40">

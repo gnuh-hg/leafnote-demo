@@ -1,7 +1,19 @@
 // Mock dữ liệu cho Leafnote demo. Tất cả nội dung tiếng Việt phục vụ visualization.
 
+// Tag thay cho project — mỗi note có thể gắn nhiều tag
+export const tags = [
+  { id: 't1', name: 'triết-học', dot: 'bg-amber-400', noteCount: 3 },
+  { id: 't2', name: 'fsrs', dot: 'bg-indigo-400', noteCount: 2 },
+  { id: 't3', name: 'nlp', dot: 'bg-sky-400', noteCount: 1 },
+  { id: 't4', name: 'sinh-học', dot: 'bg-emerald-400', noteCount: 1 },
+  { id: 't5', name: 'lịch-sử', dot: 'bg-rose-400', noteCount: 1 },
+  { id: 't6', name: 'paradigm', dot: 'bg-violet-400', noteCount: 2 },
+  { id: 't7', name: 'reading', dot: 'bg-teal-400', noteCount: 4 },
+]
+
+// Giữ projects cho KnowledgeGraph (cluster visualization) — nhưng KHÔNG dùng làm metadata cho note
 export const projects = [
-  { id: 'p1', name: 'Triết học khoa học', dot: 'bg-amber-400', atomCount: 47, noteCount: 8, active: true, heat: 0.92 },
+  { id: 'p1', name: 'Triết học khoa học', dot: 'bg-amber-400', atomCount: 47, noteCount: 8, heat: 0.92 },
   { id: 'p2', name: 'Spaced repetition & FSRS', dot: 'bg-indigo-400', atomCount: 35, noteCount: 5, heat: 0.78 },
   { id: 'p3', name: 'NLP & embedding', dot: 'bg-sky-400', atomCount: 28, noteCount: 4, heat: 0.55 },
   { id: 'p4', name: 'Sinh học phân tử', dot: 'bg-emerald-400', atomCount: 18, noteCount: 3, heat: 0.34 },
@@ -13,6 +25,7 @@ export const notes = [
     id: 'n1',
     title: 'Popper và falsificationism',
     projectId: 'p1',
+    tagIds: ['t1', 't7'],
     updatedAt: '3 giờ trước',
     atomCount: 5,
     excerpt: 'Karl Popper bác bỏ inductivism của Vienna Circle, đề xuất tiêu chí phân biệt khoa học là khả năng bị bác bỏ.',
@@ -21,6 +34,7 @@ export const notes = [
     id: 'n2',
     title: 'Kuhn — Paradigm shift và khoa học cách mạng',
     projectId: 'p1',
+    tagIds: ['t1', 't6', 't7'],
     updatedAt: 'hôm qua',
     atomCount: 6,
     excerpt: 'Khoa học không tiến hoá tuyến tính mà qua các giai đoạn normal science → crisis → revolution.',
@@ -29,6 +43,7 @@ export const notes = [
     id: 'n3',
     title: 'Lakatos — Research programmes',
     projectId: 'p1',
+    tagIds: ['t1', 't6'],
     updatedAt: '4 ngày trước',
     atomCount: 4,
     excerpt: 'Lakatos kết hợp Popper và Kuhn, đề xuất hard core và protective belt.',
@@ -37,6 +52,7 @@ export const notes = [
     id: 'n4',
     title: 'FSRS — Three-component model',
     projectId: 'p2',
+    tagIds: ['t2', 't7'],
     updatedAt: '6 giờ trước',
     atomCount: 5,
     excerpt: 'Mô hình ghi nhớ dựa trên difficulty, stability, retrievability.',
@@ -45,6 +61,7 @@ export const notes = [
     id: 'n5',
     title: 'So sánh SM-2 và FSRS',
     projectId: 'p2',
+    tagIds: ['t2'],
     updatedAt: '2 ngày trước',
     atomCount: 3,
     excerpt: 'SM-2 dùng ease factor đơn giản, FSRS fit tham số per-user qua MLE.',
@@ -53,6 +70,7 @@ export const notes = [
     id: 'n6',
     title: 'Embedding ngữ nghĩa và RAG',
     projectId: 'p3',
+    tagIds: ['t3', 't7'],
     updatedAt: 'hôm qua',
     atomCount: 5,
     excerpt: 'Vector embedding cho phép retrieval theo ngữ nghĩa thay vì keyword.',
@@ -61,6 +79,7 @@ export const notes = [
     id: 'n7',
     title: 'CRISPR-Cas9 — Cơ chế cắt DNA',
     projectId: 'p4',
+    tagIds: ['t4'],
     updatedAt: '5 ngày trước',
     atomCount: 4,
     excerpt: 'Hệ thống dùng guide RNA định vị target sequence trên DNA.',
@@ -69,6 +88,7 @@ export const notes = [
     id: 'n8',
     title: 'Phong trào Cần Vương',
     projectId: 'p5',
+    tagIds: ['t5'],
     updatedAt: '1 tuần trước',
     atomCount: 3,
     excerpt: 'Khởi nguồn từ chiếu Cần Vương 1885 của vua Hàm Nghi.',

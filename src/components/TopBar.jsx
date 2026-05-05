@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Search, Plus, Mic, Command } from 'lucide-react'
-import CaptureModal from './CaptureModal'
 
 export default function TopBar() {
-  const [capture, setCapture] = useState(null) // null | 'text' | 'voice' | 'image'
+  const navigate = useNavigate()
   const today = new Date().toLocaleDateString('vi-VN', {
     weekday: 'long',
     day: 'numeric',
@@ -37,14 +36,14 @@ export default function TopBar() {
 
       <div className="flex items-center gap-2">
         <button
-          onClick={() => setCapture('voice')}
+          onClick={() => navigate('/note/new?input=voice')}
           className="p-2 rounded-lg hover:bg-ink-850 text-zinc-400 hover:text-zinc-100 transition"
-          title="Ghi âm voice note"
+          title="Ghi chú mới bằng giọng nói"
         >
           <Mic className="w-4 h-4" />
         </button>
         <button
-          onClick={() => setCapture('text')}
+          onClick={() => navigate('/note/new')}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white text-sm font-medium transition shadow-lg shadow-indigo-500/20"
         >
           <Plus className="w-4 h-4" />
@@ -52,10 +51,6 @@ export default function TopBar() {
         </button>
         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 ml-2 ring-2 ring-ink-900" />
       </div>
-
-      {capture && (
-        <CaptureModal initialTab={capture} onClose={() => setCapture(null)} />
-      )}
     </header>
   )
 }
